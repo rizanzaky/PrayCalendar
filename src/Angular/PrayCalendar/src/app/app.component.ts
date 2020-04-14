@@ -9,13 +9,26 @@ import { DatePipe } from '@angular/common';
 export class AppComponent {
 
   selectedDate: Date = new Date();
-  selectedDateStr: string;
+  displayMonth: Date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth());
+  displayMonthStr: string;
   datesForMonth: number[][] = [];
 
-  constructor(datePipe: DatePipe) {
-    this.selectedDateStr = datePipe.transform(this.selectedDate, 'dd MMM yyyy');
+  constructor(private datePipe: DatePipe) {
+    this.displayMonthStr = datePipe.transform(this.displayMonth, 'MMMM, yyyy');
 
-    this.fillDatesFor(this.selectedDate.getFullYear(), this.selectedDate.getMonth());
+    this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
+  }
+
+  onPlusDate() {
+    this.displayMonth.setMonth(this.displayMonth.getMonth() + 1);
+    this.displayMonthStr = this.datePipe.transform(this.displayMonth, 'MMMM, yyyy');
+    this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
+  }
+
+  onMinusDate() {
+    this.displayMonth.setMonth(this.displayMonth.getMonth() - 1);
+    this.displayMonthStr = this.datePipe.transform(this.displayMonth, 'MMMM, yyyy');
+    this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
   }
 
   // month 0 indexed
@@ -27,7 +40,7 @@ export class AppComponent {
     var firstDay0Sun = firstDayDate.getDay();
     var firstDay = firstDay0Sun == 0 ? 7 : firstDay0Sun;
 
-    this.datesForMonth.slice(0, this.datesForMonth.length);
+    this.datesForMonth.splice(0, this.datesForMonth.length);
     var dayCumulator = 1;
 
     var weekDays = [];
