@@ -1,0 +1,54 @@
+<div class="container-fluid h-100" style="background-color: greenyellow;">
+    <div class="d-flex flex-column h-100">
+        <div class="" style="background-color: orange;">
+            <!-- calendar view -->
+            <div class="container">
+                <div class="row" style="background-color: red;">
+                    <!-- date picker view -->
+                    <button class="col-2"
+                            (click)="onMinusDate()"
+                            style="background-color: blueviolet;">
+                        < </button>
+                            <p class="col-8 text-center">{{displayMonthStr}}</p>
+                            <button class="col-2"
+                                    (click)="onPlusDate()"
+                                    style="background-color: blueviolet;"> > </button>
+                </div>
+            </div>
+
+            <!-- month view -->
+            <div class="" style="background-color: cyan;">
+                <table class="w-100" style="background-color: moccasin;">
+                    <thead class="text-center">
+                        <tr>
+                            <th style="background-color: green;">Mon</th>
+                            <th style="background-color: lightblue;">Tue</th>
+                            <th style="background-color: green;">Wed</th>
+                            <th style="background-color: lightblue;">Thu</th>
+                            <th style="background-color: green;">Fri</th>
+                            <th style="background-color: lightblue;">Sat</th>
+                            <th style="background-color: green;">Sun</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="text-center">
+                        <tr *ngFor="let dateForMonth of datesForMonth">
+                            <td>{{dateForMonth[0]}}</td>
+                            <td>{{dateForMonth[1]}}</td>
+                            <td>{{dateForMonth[2]}}</td>
+                            <td>{{dateForMonth[3]}}</td>
+                            <td>{{dateForMonth[4]}}</td>
+                            <td>{{dateForMonth[5]}}</td>
+                            <td>{{dateForMonth[6]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="flex-grow-1" style="background-color: blue;">
+            <!-- day info view -->
+
+        </div>
+    </div>
+</div>
