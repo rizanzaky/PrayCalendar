@@ -12,40 +12,33 @@
                 </div>
             </div>
 
+            <!-- month view -->
+            <div class="" style="background-color: cyan;">
+                <table class="w-100" style="background-color: moccasin;">
+                    <thead class="text-center">
+                        <tr>
+                            <th style="background-color: green;">Mon</th>
+                            <th>Tue</th>
+                            <th style="background-color: green;">Wed</th>
+                            <th>Thu</th>
+                            <th style="background-color: green;">Fri</th>
+                            <th>Sat</th>
+                            <th style="background-color: green;">Sun</th>
+                        </tr>
+                    </thead>
 
-            <div class="container-fluid" style="background-color: cyan;">
-                <!-- month view -->
-                <div class="">
-                    <table class="w-100" style="background-color: moccasin;">
-                        <thead class="text-center">
-                            <tr>
-                                <th style="background-color: green;">Mon</th>
-                                <th>Tue</th>
-                                <th style="background-color: green;">Wed</th>
-                                <th>Thu</th>
-                                <th style="background-color: green;">Fri</th>
-                                <th>Sat</th>
-                                <th style="background-color: green;">Sun</th>
-                            </tr>
-                        </thead>
-
-                        <tbody class="text-center">
-                            <tr *ngFor="let dateForMonth of datesForMonth">
-                                <td>{{dateForMonth[0]}}</td>
-                                <td>{{dateForMonth[1]}}</td>
-                                <td>{{dateForMonth[2]}}</td>
-                                <td>{{dateForMonth[3]}}</td>
-                                <td>{{dateForMonth[4]}}</td>
-                                <td>{{dateForMonth[5]}}</td>
-                                <td>{{dateForMonth[6]}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div>
-                        <!-- day view -->
-
-                    </div>
-                </div>
+                    <tbody class="text-center">
+                        <tr *ngFor="let dateForMonth of datesForMonth">
+                            <td>{{dateForMonth[0]}}</td>
+                            <td>{{dateForMonth[1]}}</td>
+                            <td>{{dateForMonth[2]}}</td>
+                            <td>{{dateForMonth[3]}}</td>
+                            <td>{{dateForMonth[4]}}</td>
+                            <td>{{dateForMonth[5]}}</td>
+                            <td>{{dateForMonth[6]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 

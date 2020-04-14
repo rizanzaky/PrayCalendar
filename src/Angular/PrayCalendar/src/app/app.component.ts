@@ -20,28 +20,28 @@ export class AppComponent {
 
   // month 0 indexed
   fillDatesFor(year: number, month: number) {
-    let firstDayDate = new Date(year, month, 1);
-    let lastDayDate = new Date(year, month + 1, 0);
+    var firstDayDate = new Date(year, month, 1);
+    var lastDayDate = new Date(year, month + 1, 0);
 
-    let daysInMonth = lastDayDate.getDate();
-    let firstDay0Sun = firstDayDate.getDay();
-    let firstDay = firstDay0Sun == 0 ? 7 : firstDay0Sun;
+    var daysInMonth = lastDayDate.getDate();
+    var firstDay0Sun = firstDayDate.getDay();
+    var firstDay = firstDay0Sun == 0 ? 7 : firstDay0Sun;
 
     this.datesForMonth.slice(0, this.datesForMonth.length);
-    let dayCumulator = 1;
+    var dayCumulator = 1;
 
-    let weekDays = [];
-    for (let index = 1; index < 8; index++) {
-      if (firstDay == index) {
-        weekDays.push(dayCumulator++);
-      } else {
+    var weekDays = [];
+    for (let index = 1; index < 8; index++) { // first week
+      if (firstDay > index) {
         weekDays.push(null);
+      } else {
+        weekDays.push(dayCumulator++);
       }
     }
     this.datesForMonth.push(weekDays);
 
-    for (let index = 2; index < 7; index++) { // weeks
-      let weekDays = [];
+    for (let index = 2; index < 7; index++) { // weeks post first week
+      weekDays = [];
       for (let index = 1; index < 8; index++) { // days
         if (dayCumulator <= daysInMonth) {
           weekDays.push(dayCumulator++);
@@ -51,12 +51,5 @@ export class AppComponent {
       }
       this.datesForMonth.push(weekDays);
     }
-
-    // console.log("month = " + month);
-    // console.log("year = " + year);
-    // console.log("firstDayDate = " + firstDayDate);
-    // console.log("lastDayDate = " + lastDayDate);
-    // console.log("daysInMonth = " + daysInMonth);
-    // console.log("firstDay = " + firstDay);
   }
 }
