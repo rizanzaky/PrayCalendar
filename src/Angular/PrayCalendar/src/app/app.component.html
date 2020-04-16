@@ -1,6 +1,6 @@
 <div class="container-fluid h-100" style="background-color: greenyellow;">
     <div class="d-flex flex-column h-100">
-        <div class="" style="background-color: orange;">
+        <div class="" style="background-color: orange; margin-top: 20px;">
             <!-- calendar view -->
             <div class="container">
                 <div class="row" style="background-color: red;">
@@ -17,7 +17,7 @@
             </div>
 
             <!-- month view -->
-            <div class="" style="background-color: cyan;">
+            <div class="" style="background-color: cyan; margin-top: 20px;">
                 <table class="w-100" style="background-color: moccasin;">
                     <thead class="text-center">
                         <tr>
@@ -46,9 +46,33 @@
             </div>
         </div>
 
-        <div class="flex-grow-1" style="background-color: blue;">
+        <div class="flex-grow-1" style="background-color: blue; margin-top: 20px;">
             <!-- day info view -->
+            <table class="w-100" style="background-color: yellowgreen;">
+                <thead class="text-center">
+                    <tr>
+                        <th style="background-color: green;">Date</th>
+                        <th style="background-color: lightblue;">Fajr</th>
+                        <th style="background-color: green;">Sun</th>
+                        <th style="background-color: lightblue;">Luhar</th>
+                        <th style="background-color: green;">Asar</th>
+                        <th style="background-color: lightblue;">Ma'rib</th>
+                        <th style="background-color: green;">Isha</th>
+                    </tr>
+                </thead>
 
+                <tbody class="text-center">
+                    <tr *ngFor="let timesForDate of timesForDates">
+                        <td>{{timesForDate[0]}}</td>
+                        <td>{{timesForDate[1]}}</td>
+                        <td>{{timesForDate[2]}}</td>
+                        <td>{{timesForDate[3]}}</td>
+                        <td>{{timesForDate[4]}}</td>
+                        <td>{{timesForDate[5]}}</td>
+                        <td>{{timesForDate[6]}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
