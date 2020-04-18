@@ -20,12 +20,16 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getMonthlyPrayerTimes();
+    this.loadData();
+  }
 
+  private async loadData() {
     this.displayMonthStr = this.datePipe.transform(this.displayMonth, 'MMMM, yyyy');
 
-    // this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
-    // this.fillPrayerTimesForDates(this.displayMonth.getMonth());
+    this.prayerTimes = await this.prayerTimesService.getMonthlyPrayerTimesAsync();
+
+    this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
+    this.fillPrayerTimesForDates(this.displayMonth.getMonth());
   }
 
   onPlusDate() {
@@ -88,22 +92,6 @@ export class AppComponent implements OnInit {
 
     this.timesForDates.splice(0, this.timesForDates.length);
     this.timesForDates = timesForMonth ?? [];
-  }
-
-  async getMonthlyPrayerTimesAsync() {
-    this.prayerTimes = await this.prayerTimesService.getMonthlyPrayerTimesAsync();
-
-    this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
-    this.fillPrayerTimesForDates(this.displayMonth.getMonth());
-  }
-
-  getMonthlyPrayerTimes() {
-    this.prayerTimesService.getMonthlyPrayerTimes$().subscribe(prayerTimes => {
-      this.prayerTimes = prayerTimes;
-
-      this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
-      this.fillPrayerTimesForDates(this.displayMonth.getMonth());
-    });
   }
 
   getMonthShortNameFor(month: number): string {
