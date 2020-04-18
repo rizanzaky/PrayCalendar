@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { PrayerTimesService } from 'src/services/prayer-times.service';
 
@@ -7,7 +7,7 @@ import { PrayerTimesService } from 'src/services/prayer-times.service';
   templateUrl: './app.component.html',
   styles: []
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   selectedDate: Date = new Date();
   displayMonth: Date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth());
@@ -17,9 +17,12 @@ export class AppComponent {
   private prayerTimes;
 
   constructor(private prayerTimesService: PrayerTimesService, private datePipe: DatePipe) {
+  }
+
+  ngOnInit(): void {
     this.getMonthlyPrayerTimes();
 
-    this.displayMonthStr = datePipe.transform(this.displayMonth, 'MMMM, yyyy');
+    this.displayMonthStr = this.datePipe.transform(this.displayMonth, 'MMMM, yyyy');
 
     // this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
     // this.fillPrayerTimesForDates(this.displayMonth.getMonth());
@@ -87,9 +90,16 @@ export class AppComponent {
     this.timesForDates = timesForMonth ?? [];
   }
 
+  async getMonthlyPrayerTimesAsync() {
+    this.prayerTimes = await this.prayerTimesService.getMonthlyPrayerTimesAsync();
+
+    this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
+    this.fillPrayerTimesForDates(this.displayMonth.getMonth());
+  }
+
   getMonthlyPrayerTimes() {
-    this.prayerTimesService.getMonthlyPrayerTimes().subscribe(a => {
-      this.prayerTimes = a;
+    this.prayerTimesService.getMonthlyPrayerTimes$().subscribe(prayerTimes => {
+      this.prayerTimes = prayerTimes;
 
       this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
       this.fillPrayerTimesForDates(this.displayMonth.getMonth());
