@@ -56,8 +56,8 @@
             </button>
 
             <div class="text-center d-flex justify-content-center align-items-center clock-view">
-                <span class="clock-text">10:00</span>
-                <span class="clock-ampm">AM</span>
+                <span class="clock-text">{{timeNowStr}}</span>
+                <span class="clock-ampm">{{timeNowAmPmStr}}</span>
             </div>
 
             <button class="d-flex justify-content-center align-items-center action-button today-button"
@@ -69,6 +69,7 @@
 
         <!-- date info view -->
         <div class="flex-grow-1 d-flex flex-column date-info-view overflow-hidden">
+            <!-- date info area -->
             <div class="flex-grow-1 overflow-auto">
                 <table class="split-table text-center w-100">
                     <thead>

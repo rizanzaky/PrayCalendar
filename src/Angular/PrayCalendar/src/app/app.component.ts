@@ -16,12 +16,30 @@ export class AppComponent implements OnInit {
   datesForMonth: number[][] = [];
   timesForDates: string[][] = [];
   private prayerTimes;
+  timeNowStr;
+  timeNowAmPmStr;
+  private timeNow;
 
   constructor(private prayerTimesService: PrayerTimesService, private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
+    this.runClock();
     this.loadData();
+  }
+
+  private runClock() {
+    this.updateTime();
+
+    setInterval(() => {
+      this.updateTime();
+    }, 1000);
+  }
+
+  private updateTime() {
+    this.timeNow = new Date();
+    this.timeNowStr = this.datePipe.transform(this.timeNow, 'hh:mm');
+    this.timeNowAmPmStr = this.datePipe.transform(this.timeNow, 'a');
   }
 
   private async loadData() {
