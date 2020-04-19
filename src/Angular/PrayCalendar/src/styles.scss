@@ -13,6 +13,7 @@ $dark-red: #FF0080;
 $light-red: #FFE6F9;
 $dark-yellow: #A58C00;
 $light-yellow: #FFFCCC;
+$action-blue: #3FA2F8;
 
 html,
 body {
@@ -25,7 +26,7 @@ body {
 
 .calendar-view {
     // background-color: red;
-    margin: 10px -5px 0px -5px;
+    margin: 10px -5px 22px -5px;
 }
 
 .date-throttle {
@@ -117,4 +118,50 @@ body {
 .split-table .st-sun-td {
     font-size: 14px;
     font-weight: normal;
+}
+
+.action-bar {
+    margin: 0px 0px 24px 0px;
+}
+
+.action-button {
+    background-color: $action-blue;
+    color: $white;
+    border: none;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0px 8px;
+    height: 32px;
+    border-radius: 10px;
+
+    opacity: 50%;
+}
+
+.swap-button {
+    border-bottom-left-radius: 0px;
+}
+
+.today-button {
+    border-top-right-radius: 0px;
+}
+
+.swap-icon {
+    background: url('./assets/swap.svg') no-repeat center center;
+    display: inline-block;
+    height: 12px;
+    width: 15px;
+    margin-right: 8px;
+}
+
+.clock-text {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.clock-ampm {
+    font-size: 9px;
+    font-weight: normal;
+    margin-left: 2px;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
 }
