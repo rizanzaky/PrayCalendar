@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { PrayerTimesService } from 'src/services/prayer-times.service';
+import { DatetimeHelper } from 'src/helpers/datetime-herlper';
 
 @Component({
   selector: 'app-root',
@@ -84,7 +85,7 @@ export class AppComponent implements OnInit {
   }
 
   fillPrayerTimesForDates(month: number) {
-    var monthShortName = this.getMonthShortNameFor(month);
+    var monthShortName = DatetimeHelper.getMonthShortNameFor(month);
 
     if (this.prayerTimes[monthShortName]) {
       var timesForMonth = this.prayerTimes[monthShortName].slice(0, this.prayerTimes[monthShortName].length);
@@ -92,36 +93,5 @@ export class AppComponent implements OnInit {
 
     this.timesForDates.splice(0, this.timesForDates.length);
     this.timesForDates = timesForMonth ?? [];
-  }
-
-  getMonthShortNameFor(month: number): string {
-    switch (month) {
-      case 0:
-        return "jan";
-      case 1:
-        return "feb";
-      case 2:
-        return "mar";
-      case 3:
-        return "apr";
-      case 4:
-        return "may";
-      case 5:
-        return "jun";
-      case 6:
-        return "jul";
-      case 7:
-        return "aug";
-      case 8:
-        return "sep";
-      case 9:
-        return "oct";
-      case 10:
-        return "nov";
-      case 11:
-        return "dec";
-      default:
-        return "n/a";
-    }
   }
 }
