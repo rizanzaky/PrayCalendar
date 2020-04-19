@@ -2,18 +2,18 @@
 @import "../node_modules/bootstrap-scss/bootstrap.scss";
 
 $transparent: transparent;
-$white: #FFFFFF;
+$white: #ffffff;
 $black: #000000;
-$light-dark: #3A3A3A;
-$dark-white: #F3F3F3;
-$light-gray: #F2F2F2;
-$dark-blue: #00689F;
-$light-blue: #C7E8FA;
-$dark-red: #FF0080;
-$light-red: #FFE6F9;
-$dark-yellow: #A58C00;
-$light-yellow: #FFFCCC;
-$action-blue: #3FA2F8;
+$light-dark: #3a3a3a;
+$dark-white: #f3f3f3;
+$light-gray: #f2f2f2;
+$dark-blue: #00689f;
+$light-blue: #c7e8fa;
+$dark-red: #ff0080;
+$light-red: #ffe6f9;
+$dark-yellow: #a58c00;
+$light-yellow: #fffccc;
+$action-blue: #3fa2f8;
 
 html,
 body {
@@ -30,7 +30,8 @@ body {
 }
 
 .date-throttle {
-    background-color: $white; margin-bottom: 15px;
+    background-color: $white;
+    margin-bottom: 15px;
 }
 
 .date-text {
@@ -41,7 +42,8 @@ body {
     margin: 0px;
 }
 
-.left-button, .right-button {
+.left-button,
+.right-button {
     background-color: $transparent;
     border: none;
     padding: 5px;
@@ -57,15 +59,16 @@ body {
 }
 
 .left-arrow {
-    background: url('./assets/left-arrow.svg') no-repeat center center;
+    background: url("./assets/left-arrow.svg") no-repeat center center;
 }
 
 .right-arrow {
-    background: url('./assets/right-arrow.svg') no-repeat center center;
+    background: url("./assets/right-arrow.svg") no-repeat center center;
 }
 
 .month-view {
-    background-color: $white; margin-top: 15px;
+    background-color: $white;
+    margin-top: 15px;
 }
 
 .split-table .st-bottom-border-5 {
@@ -85,23 +88,31 @@ body {
 }
 
 .split-table .st-yellow-th {
-    border-left: 2px solid white; border-right: 2px solid white;
-    background-color: $dark-yellow; color: $dark-white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    background-color: $dark-yellow;
+    color: $dark-white;
 }
 
 .split-table .st-week-th {
-    border-left: 2px solid white; border-right: 2px solid white;
-    background-color: $light-dark; color: $dark-white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    background-color: $light-dark;
+    color: $dark-white;
 }
 
 .split-table .st-sat-th {
-    border-left: 2px solid white; border-right: 2px solid white;
-    background-color: $dark-blue; color: $dark-white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    background-color: $dark-blue;
+    color: $dark-white;
 }
 
 .split-table .st-sun-th {
-    border-left: 2px solid white; border-right: 2px solid white;
-    background-color: $dark-red; color: $dark-white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    background-color: $dark-red;
+    color: $dark-white;
 }
 
 .split-table .st-week-td,
@@ -113,23 +124,31 @@ body {
 }
 
 .split-table .st-yellow-td {
-    border-left: 2px solid white; border-right: 2px solid white;
-    background-color: $light-yellow; color: $black;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    background-color: $light-yellow;
+    color: $black;
 }
 
 .split-table .st-week-td {
-    border-left: 2px solid white; border-right: 2px solid white;
-    background-color: $light-gray; color: $black;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    background-color: $light-gray;
+    color: $black;
 }
 
 .split-table .st-sat-td {
-    border-left: 2px solid white; border-right: 2px solid white;
-    background-color: $light-blue; color: $black;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    background-color: $light-blue;
+    color: $black;
 }
 
 .split-table .st-sun-td {
-    border-left: 2px solid white; border-right: 2px solid white;
-    background-color: $light-red; color: $black;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    background-color: $light-red;
+    color: $black;
 }
 
 .action-bar {
@@ -159,19 +178,21 @@ body {
 }
 
 .swap-icon {
-    background: url('./assets/swap.svg') no-repeat center center;
+    background: url("./assets/swap.svg") no-repeat center center;
     display: inline-block;
     height: 12px;
     width: 15px;
     margin-right: 8px;
 }
 
+$clock-height: 24px;
+
 .clock-view {
-    height: 24px;
+    height: $clock-height;
 }
 
 .clock-text {
-    font-size: 24px;
+    font-size: $clock-height;
     font-weight: bold;
 }
 
@@ -187,14 +208,18 @@ body {
     margin: 0px -5px;
 }
 
+$flip-bottom-margin: 15px;
+$dot-height: 8px;
+$flip-height: $flip-bottom-margin + $dot-height + $flip-bottom-margin;
+
 .flip-indicator {
-    height: 38px;
+    height: $flip-height;
 }
 
 .dot-indicator {
-    background: url('./assets/dot.svg') no-repeat center center;
+    background: url("./assets/dot.svg") no-repeat center center;
     display: inline-block;
-    height: 8px;
-    width: 8px;
-    margin: 15px 10px;
+    height: $dot-height;
+    width: $dot-height;
+    margin: $flip-bottom-margin 10px;
 }
