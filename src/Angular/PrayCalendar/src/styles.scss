@@ -78,9 +78,15 @@ body {
 
 .split-table .st-week-th,
 .split-table .st-sat-th,
-.split-table .st-sun-th {
+.split-table .st-sun-th,
+.split-table .st-yellow-th {
     font-size: 15px;
     font-weight: bold;
+}
+
+.split-table .st-yellow-th {
+    border-left: 2px solid white; border-right: 2px solid white;
+    background-color: $dark-yellow; color: $dark-white;
 }
 
 .split-table .st-week-th {
@@ -98,6 +104,19 @@ body {
     background-color: $dark-red; color: $dark-white;
 }
 
+.split-table .st-week-td,
+.split-table .st-sat-td,
+.split-table .st-sun-td,
+.split-table .st-yellow-td {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.split-table .st-yellow-td {
+    border-left: 2px solid white; border-right: 2px solid white;
+    background-color: $light-yellow; color: $black;
+}
+
 .split-table .st-week-td {
     border-left: 2px solid white; border-right: 2px solid white;
     background-color: $light-gray; color: $black;
@@ -113,13 +132,6 @@ body {
     background-color: $light-red; color: $black;
 }
 
-.split-table .st-week-td,
-.split-table .st-sat-td,
-.split-table .st-sun-td {
-    font-size: 14px;
-    font-weight: normal;
-}
-
 .action-bar {
     margin: 0px 0px 24px 0px;
 }
@@ -133,6 +145,7 @@ body {
     padding: 0px 8px;
     height: 32px;
     border-radius: 10px;
+    width: 33%;
 
     opacity: 50%;
 }
@@ -153,6 +166,10 @@ body {
     margin-right: 8px;
 }
 
+.clock-view {
+    height: 24px;
+}
+
 .clock-text {
     font-size: 24px;
     font-weight: bold;
@@ -164,4 +181,8 @@ body {
     margin-left: 2px;
     writing-mode: vertical-rl;
     text-orientation: upright;
+}
+
+.date-info-view {
+    margin: 0px -5px 13px -5px;
 }

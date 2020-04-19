@@ -48,55 +48,55 @@
         </div>
 
         <!-- clock view -->
-        <div class="row action-bar">
-            <button class="col-4 d-flex justify-content-center align-items-center action-button swap-button"
+        <div class="d-flex justify-content-between align-items-center action-bar">
+            <button class="d-flex justify-content-center align-items-center action-button swap-button"
                 (click)="onMinusDate()" disabled>
                 <span class="swap-icon"></span>
                 <span>Day View</span>
             </button>
 
-            <div class="col-4 text-center d-flex justify-content-center align-items-center">
+            <div class="text-center d-flex justify-content-center align-items-center clock-view">
                 <span class="clock-text">10:00</span>
                 <span class="clock-ampm">AM</span>
             </div>
 
-            <button class="col-4 d-flex justify-content-center align-items-center action-button today-button"
+            <button class="d-flex justify-content-center align-items-center action-button today-button"
                 (click)="onPlusDate()" disabled>
                 <span class="swap-icon"></span>
                 <span>Today</span>
             </button>
         </div>
 
-        <div class="flex-grow-1" style="background-color: white;">
-            <!-- day info view -->
-            <table class="w-100" style="background-color: #f2f2f2;">
-                <thead class="text-center" style="border-bottom: 5px solid white;">
-                    <tr>
-                        <th style="background-color: #3a3a3a; color: #f3f3f3;">Date</th>
-                        <th style="background-color: #f3f3f3; color: #3a3a3a;">Fajr</th>
-                        <th style="background-color: #3a3a3a; color: #f3f3f3;">Sun</th>
-                        <th style="background-color: #f3f3f3; color: #3a3a3a;">Luhar</th>
-                        <th style="background-color: #3a3a3a; color: #f3f3f3;">Asar</th>
-                        <th style="background-color: #f3f3f3; color: #3a3a3a;">Ma'rib</th>
-                        <th style="background-color: #3a3a3a; color: #f3f3f3;">Isha</th>
+        <!-- date info view -->
+        <div class="flex-grow-1 date-info-view">
+            <table class="split-table text-center w-100">
+                <thead>
+                    <tr class="st-bottom-border-5">
+                        <th class="st-sat-th">Date</th>
+                        <th class="st-week-th">Fajr</th>
+                        <th class="st-yellow-th">Sun</th>
+                        <th class="st-week-th">Luhar</th>
+                        <th class="st-week-th">Asar</th>
+                        <th class="st-week-th">Ma'rib</th>
+                        <th class="st-week-th">Isha</th>
                     </tr>
                 </thead>
 
                 <tbody class="text-center">
-                    <tr *ngFor="let timesForDate of timesForDates" style="background-color: #f2f2f2;">
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[0]}}
+                    <tr *ngFor="let timesForDate of timesForDates" class="st-bottom-border-2">
+                        <td class="st-sat-td">{{timesForDate[0]}}
                         </td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[1]}}
+                        <td class="st-week-td">{{timesForDate[1]}}
                         </td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[2]}}
+                        <td class="st-yellow-td">{{timesForDate[2]}}
                         </td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[3]}}
+                        <td class="st-week-td">{{timesForDate[3]}}
                         </td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[4]}}
+                        <td class="st-week-td">{{timesForDate[4]}}
                         </td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[6]}}
+                        <td class="st-week-td">{{timesForDate[6]}}
                         </td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[7]}}
+                        <td class="st-week-td">{{timesForDate[7]}}
                         </td>
                     </tr>
                 </tbody>
