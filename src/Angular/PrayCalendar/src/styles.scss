@@ -184,5 +184,17 @@ body {
 }
 
 .date-info-view {
-    margin: 0px -5px 13px -5px;
+    margin: 0px -5px;
+}
+
+.flip-indicator {
+    height: 38px;
+}
+
+.dot-indicator {
+    background: url('./assets/dot.svg') no-repeat center center;
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    margin: 15px 10px;
 }
