@@ -1,7 +1,120 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap-scss/bootstrap.scss";
 
+$transparent: transparent;
+$white: #FFFFFF;
+$black: #000000;
+$light-dark: #3A3A3A;
+$dark-white: #F3F3F3;
+$light-gray: #F2F2F2;
+$dark-blue: #00689F;
+$light-blue: #C7E8FA;
+$dark-red: #FF0080;
+$light-red: #FFE6F9;
+$dark-yellow: #A58C00;
+$light-yellow: #FFFCCC;
+
 html,
 body {
     height: 100%;
+}
+
+.container-fluid {
+    // background-color: white;
+}
+
+.calendar-view {
+    // background-color: red;
+    margin: 10px -5px 0px -5px;
+}
+
+.date-throttle {
+    background-color: $white; margin-bottom: 15px;
+}
+
+.date-text {
+    color: $black;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+}
+
+.left-button, .right-button {
+    background-color: $transparent;
+    border: none;
+    padding: 5px;
+    height: 40px;
+    width: 34px;
+}
+
+.left-arrow,
+.right-arrow {
+    display: inline-block;
+    height: 30px;
+    width: 24px;
+}
+
+.left-arrow {
+    background: url('./assets/left-arrow.svg') no-repeat center center;
+}
+
+.right-arrow {
+    background: url('./assets/right-arrow.svg') no-repeat center center;
+}
+
+.month-view {
+    background-color: $white; margin-top: 15px;
+}
+
+.split-table .st-bottom-border-5 {
+    border-bottom: 5px solid $white;
+}
+
+.split-table .st-bottom-border-2 {
+    border-bottom: 2px solid $white;
+}
+
+.split-table .st-week-th,
+.split-table .st-sat-th,
+.split-table .st-sun-th {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.split-table .st-week-th {
+    border-left: 2px solid white; border-right: 2px solid white;
+    background-color: $light-dark; color: $dark-white;
+}
+
+.split-table .st-sat-th {
+    border-left: 2px solid white; border-right: 2px solid white;
+    background-color: $dark-blue; color: $dark-white;
+}
+
+.split-table .st-sun-th {
+    border-left: 2px solid white; border-right: 2px solid white;
+    background-color: $dark-red; color: $dark-white;
+}
+
+.split-table .st-week-td {
+    border-left: 2px solid white; border-right: 2px solid white;
+    background-color: $light-gray; color: $black;
+}
+
+.split-table .st-sat-td {
+    border-left: 2px solid white; border-right: 2px solid white;
+    background-color: $light-blue; color: $black;
+}
+
+.split-table .st-sun-td {
+    border-left: 2px solid white; border-right: 2px solid white;
+    background-color: $light-red; color: $black;
+}
+
+.split-table .st-week-td,
+.split-table .st-sat-td,
+.split-table .st-sun-td {
+    font-size: 14px;
+    font-weight: normal;
 }
