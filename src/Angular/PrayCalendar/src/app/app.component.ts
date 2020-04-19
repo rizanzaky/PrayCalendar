@@ -15,10 +15,12 @@ export class AppComponent implements OnInit {
   displayMonthStr: string;
   datesForMonth: number[][] = [];
   timesForDates: string[][] = [];
-  private prayerTimes;
-  timeNowStr;
-  timeNowAmPmStr;
-  private timeNow;
+  private prayerTimes: Object;
+  private timeNow: Date
+  timeNowHoursStr: string;
+  timeNowMinsStr: string;
+  isBlinked: boolean = true;
+  timeNowAmPmStr: string;
 
   constructor(private prayerTimesService: PrayerTimesService, private datePipe: DatePipe) {
   }
@@ -33,12 +35,14 @@ export class AppComponent implements OnInit {
 
     setInterval(() => {
       this.updateTime();
+      this.isBlinked = !this.isBlinked;
     }, 1000);
   }
 
   private updateTime() {
     this.timeNow = new Date();
-    this.timeNowStr = this.datePipe.transform(this.timeNow, 'hh:mm');
+    this.timeNowHoursStr = this.datePipe.transform(this.timeNow, 'hh');
+    this.timeNowMinsStr = this.datePipe.transform(this.timeNow, 'mm');
     this.timeNowAmPmStr = this.datePipe.transform(this.timeNow, 'a');
   }
 

@@ -191,6 +191,10 @@ $clock-height: 24px;
     height: $clock-height;
 }
 
+.clock-view .clock-blinked {
+    color: $white;
+}
+
 .clock-text {
     font-size: $clock-height;
     font-weight: bold;

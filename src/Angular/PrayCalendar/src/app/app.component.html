@@ -56,7 +56,9 @@
             </button>
 
             <div class="text-center d-flex justify-content-center align-items-center clock-view">
-                <span class="clock-text">{{timeNowStr}}</span>
+                <span class="clock-text">{{timeNowHoursStr}}</span>
+                <span class="clock-text" [class.clock-blinked]="isBlinked">:</span>
+                <span class="clock-text">{{timeNowMinsStr}}</span>
                 <span class="clock-ampm">{{timeNowAmPmStr}}</span>
             </div>
 
