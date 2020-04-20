@@ -151,6 +151,17 @@ body {
     color: $black;
 }
 
+$percent: 14.29%;
+
+.split-table > thead > tr > th {
+    width: $percent;
+    padding: 2px 0px;
+}
+
+.month-view > .split-table > tbody > tr > td {
+    padding: 2px 0px;
+}
+
 .action-bar {
     margin: 0px 0px 24px 0px;
 }
