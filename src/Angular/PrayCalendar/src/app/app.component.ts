@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
 
   private updateTime() {
     this.timeNow = new Date();
-    this.timeNowHoursStr = this.datePipe.transform(this.timeNow, 'hh');
+    this.timeNowHoursStr = this.datePipe.transform(this.timeNow, 'h');
     this.timeNowMinsStr = this.datePipe.transform(this.timeNow, 'mm');
     this.timeNowAmPmStr = this.datePipe.transform(this.timeNow, 'a');
   }
