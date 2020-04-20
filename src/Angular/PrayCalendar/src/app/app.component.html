@@ -1,82 +1,116 @@
-<div class="container-fluid h-100" style="background-color: white;">
+<div class="container-fluid h-100">
     <div class="d-flex flex-column h-100">
-        <div class="" style="background-color: white; margin-top: 20px;">
-            <!-- calendar view -->
-            <div class="container" style="background-color: cyan; margin-bottom: 15px;">
-                <div class="row" style="background-color: white;">
-                    <!-- date picker view -->
-                    <button class="col-2"
-                            (click)="onMinusDate()"
-                            style="background-color: #707070; color: white; font-size: 24px; font-weight: bolder;">
-                        < </button>
-                            <p class="col-8 text-center" style="font-size: 18px; font-weight: bolder; padding: 10px; margin: 0px;">{{displayMonthStr}}</p>
-                            <button class="col-2"
-                                    (click)="onPlusDate()"
-                                    style="background-color: #707070; color: white; font-size: 24px; font-weight: bolder"> > </button>
-                </div>
+
+        <!-- calendar view -->
+        <div class="calendar-view">
+
+            <!-- date throttle view -->
+            <div class="d-flex justify-content-between date-throttle">
+                <button class="left-button" (click)="onMinusDate()">
+                    <span class="left-arrow"></span>
+                </button>
+
+                <p class="date-text text-center align-self-center">{{displayMonthStr}}</p>
+
+                <button class="right-button" (click)="onPlusDate()">
+                    <span class="right-arrow"></span>
+                </button>
             </div>
 
-            <hr />
-
             <!-- month view -->
-            <div class="" style="background-color: cyan; margin-top: 15px;">
-                <table class="w-100" style="background-color: #f2f2f2;">
-                    <thead class="text-center" style="border-bottom: 5px solid white;">
-                        <tr>
-                            <th style="background-color: #3a3a3a; color: #f3f3f3;">Mon</th>
-                            <th style="background-color: #f3f3f3; color: #3a3a3a;">Tue</th>
-                            <th style="background-color: #3a3a3a; color: #f3f3f3;">Wed</th>
-                            <th style="background-color: #f3f3f3; color: #3a3a3a;">Thu</th>
-                            <th style="background-color: #3a3a3a; color: #f3f3f3;">Fri</th>
-                            <th style="background-color: #f3f3f3; color: #3a3a3a;">Sat</th>
-                            <th style="background-color: #3a3a3a; color: #f3f3f3;">Sun</th>
+            <div class="month-view">
+                <table class="split-table text-center w-100">
+                    <thead>
+                        <tr class="st-bottom-border-5">
+                            <th class="st-week-th">Mon</th>
+                            <th class="st-week-th">Tue</th>
+                            <th class="st-week-th">Wed</th>
+                            <th class="st-week-th">Thu</th>
+                            <th class="st-week-th">Fri</th>
+                            <th class="st-sat-th">Sat</th>
+                            <th class="st-sun-th">Sun</th>
                         </tr>
                     </thead>
 
-                    <tbody class="text-center">
-                        <tr *ngFor="let dateForMonth of datesForMonth" style="border-bottom: 2px solid white;">
-                            <td style="border-left: 1px solid white; border-right: 1px solid white;">{{dateForMonth[0]}}</td>
-                            <td style="border-left: 1px solid white; border-right: 1px solid white;">{{dateForMonth[1]}}</td>
-                            <td style="border-left: 1px solid white; border-right: 1px solid white;">{{dateForMonth[2]}}</td>
-                            <td style="border-left: 1px solid white; border-right: 1px solid white;">{{dateForMonth[3]}}</td>
-                            <td style="border-left: 1px solid white; border-right: 1px solid white;">{{dateForMonth[4]}}</td>
-                            <td style="border-left: 1px solid white; border-right: 1px solid white;">{{dateForMonth[5]}}</td>
-                            <td style="border-left: 1px solid white; border-right: 1px solid white;">{{dateForMonth[6]}}</td>
+                    <tbody>
+                        <tr *ngFor="let dateForMonth of datesForMonth" class="st-bottom-border-2">
+                            <td class="st-week-td">{{dateForMonth[0]}}</td>
+                            <td class="st-week-td">{{dateForMonth[1]}}</td>
+                            <td class="st-week-td">{{dateForMonth[2]}}</td>
+                            <td class="st-week-td">{{dateForMonth[3]}}</td>
+                            <td class="st-week-td">{{dateForMonth[4]}}</td>
+                            <td class="st-sat-td">{{dateForMonth[5]}}</td>
+                            <td class="st-sun-td">{{dateForMonth[6]}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <div class="flex-grow-1" style="background-color: white;">
-            <hr />
+        <!-- clock view -->
+        <div class="d-flex justify-content-between align-items-center action-bar">
+            <button class="d-flex justify-content-center align-items-center action-button swap-button"
+                (click)="onMinusDate()" disabled>
+                <span class="swap-icon"></span>
+                <span>Day View</span>
+            </button>
 
-            <!-- day info view -->
-            <table class="w-100" style="background-color: #f2f2f2;">
-                <thead class="text-center" style="border-bottom: 5px solid white;">
-                    <tr>
-                        <th style="background-color: #3a3a3a; color: #f3f3f3;">Date</th>
-                        <th style="background-color: #f3f3f3; color: #3a3a3a;">Fajr</th>
-                        <th style="background-color: #3a3a3a; color: #f3f3f3;">Sun</th>
-                        <th style="background-color: #f3f3f3; color: #3a3a3a;">Luhar</th>
-                        <th style="background-color: #3a3a3a; color: #f3f3f3;">Asar</th>
-                        <th style="background-color: #f3f3f3; color: #3a3a3a;">Ma'rib</th>
-                        <th style="background-color: #3a3a3a; color: #f3f3f3;">Isha</th>
-                    </tr>
-                </thead>
+            <div class="text-center d-flex justify-content-center align-items-center clock-view">
+                <span class="clock-text">{{timeNowHoursStr}}</span>
+                <span class="clock-text" [class.clock-blinked]="isBlinked">:</span>
+                <span class="clock-text">{{timeNowMinsStr}}</span>
+                <span class="clock-ampm">{{timeNowAmPmStr}}</span>
+            </div>
 
-                <tbody class="text-center">
-                    <tr *ngFor="let timesForDate of timesForDates">
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[0]}}</td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[1]}}</td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[2]}}</td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[3]}}</td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[4]}}</td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[5]}}</td>
-                        <td style="border-left: 2px solid white; border-right: 2px solid white;">{{timesForDate[6]}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <button class="d-flex justify-content-center align-items-center action-button today-button"
+                (click)="onPlusDate()" disabled>
+                <span class="swap-icon"></span>
+                <span>Today</span>
+            </button>
+        </div>
+
+        <!-- date info view -->
+        <div class="flex-grow-1 d-flex flex-column date-info-view overflow-hidden">
+            <!-- date info area -->
+            <div class="flex-grow-1 overflow-auto">
+                <table class="split-table text-center w-100">
+                    <thead>
+                        <tr class="st-bottom-border-5">
+                            <th class="st-sat-th">Date</th>
+                            <th class="st-week-th">Fajr</th>
+                            <th class="st-yellow-th">Sun</th>
+                            <th class="st-week-th">Luhar</th>
+                            <th class="st-week-th">Asar</th>
+                            <th class="st-week-th">Ma'rib</th>
+                            <th class="st-week-th">Isha</th>
+                        </tr>
+                    </thead>
+    
+                    <tbody class="text-center">
+                        <tr *ngFor="let timesForDate of timesForDates" class="st-bottom-border-2">
+                            <td class="st-sat-td">{{timesForDate[0]}}
+                            </td>
+                            <td class="st-week-td">{{timesForDate[1]}}
+                            </td>
+                            <td class="st-yellow-td">{{timesForDate[2]}}
+                            </td>
+                            <td class="st-week-td">{{timesForDate[3]}}
+                            </td>
+                            <td class="st-week-td">{{timesForDate[4]}}
+                            </td>
+                            <td class="st-week-td">{{timesForDate[6]}}
+                            </td>
+                            <td class="st-week-td">{{timesForDate[7]}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <!-- flip indicator -->
+            <div class="flip-indicator text-center">
+                <span class="dot-indicator"></span>
+            </div>
         </div>
     </div>
 </div>
