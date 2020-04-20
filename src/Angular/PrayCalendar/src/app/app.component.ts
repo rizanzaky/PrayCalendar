@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   private timeNow: Date
   timeNowHoursStr: string;
   timeNowMinsStr: string;
-  isBlinked: boolean = true;
+  isBlinked: boolean = false;
   timeNowAmPmStr: string;
 
   constructor(private prayerTimesService: PrayerTimesService, private datePipe: DatePipe) {
