@@ -102,7 +102,9 @@ export class AppComponent implements OnInit {
           break;
         }
       }
-      this.datesForMonth.push(weekDays);
+      if (weekDays.length > 0) {
+        this.datesForMonth.push(weekDays);
+      }
     }
   }
 
