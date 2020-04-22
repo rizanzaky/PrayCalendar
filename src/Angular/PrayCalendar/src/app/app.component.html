@@ -71,12 +71,10 @@
 
         <!-- date info view -->
         <div class="flex-grow-1 d-flex flex-column date-info-view overflow-hidden">
-
-            <!-- table header -->
-            <div class="split-table text-center w-100">
-                <div class="st-header">
-                    <!-- table row -->
-                    <tr class="st-bottom-border-5 d-flex justify-content-between">
+            <!-- date info area -->
+            <table class="flex-grow-1 d-flex flex-column split-table text-center w-100 overflow-hidden">
+                <thead>
+                    <tr class="st-bottom-border-5">
                         <th class="st-sat-th">Date</th>
                         <th class="st-week-th">Fajr</th>
                         <th class="st-yellow-th">Sun</th>
@@ -85,33 +83,27 @@
                         <th class="st-week-th">Ma'rib</th>
                         <th class="st-week-th">Isha</th>
                     </tr>
-                </div>
-            </div>
-            
-            <!-- date info area -->
-            <div class="flex-grow-1 overflow-auto">
-                <div class="split-table text-center">
-                    <!-- table body -->
-                    <div class="st-body">
-                        <tr *ngFor="let timesForDate of timesForDates" class="st-bottom-border-2 d-flex justify-content-between">
-                            <td class="st-sat-td">{{timesForDate[0]}}
-                            </td>
-                            <td class="st-week-td">{{timesForDate[1]}}
-                            </td>
-                            <td class="st-yellow-td">{{timesForDate[2]}}
-                            </td>
-                            <td class="st-week-td">{{timesForDate[3]}}
-                            </td>
-                            <td class="st-week-td">{{timesForDate[4]}}
-                            </td>
-                            <td class="st-week-td">{{timesForDate[6]}}
-                            </td>
-                            <td class="st-week-td">{{timesForDate[7]}}
-                            </td>
-                        </tr>
-                    </div>
-                </div>
-            </div>
+                </thead>
+
+                <tbody class="flex-grow-1 text-center w-100 overflow-auto">
+                    <tr *ngFor="let timesForDate of timesForDates" class="d-flex flex-fill st-bottom-border-2">
+                        <td class="st-sat-td">{{timesForDate[0]}}
+                        </td>
+                        <td class="st-week-td">{{timesForDate[1]}}
+                        </td>
+                        <td class="st-yellow-td">{{timesForDate[2]}}
+                        </td>
+                        <td class="st-week-td">{{timesForDate[3]}}
+                        </td>
+                        <td class="st-week-td">{{timesForDate[4]}}
+                        </td>
+                        <td class="st-week-td">{{timesForDate[6]}}
+                        </td>
+                        <td class="st-week-td">{{timesForDate[7]}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     
             <!-- flip indicator -->
             <div class="flip-indicator text-center">
