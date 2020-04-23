@@ -20,13 +20,8 @@ body {
     height: 100%;
 }
 
-.container-fluid {
-    // background-color: white;
-}
-
 .calendar-view {
-    // background-color: red;
-    margin: 10px -5px 22px -5px;
+    margin: 10px -5px 13px -5px;
 }
 
 .date-throttle {
@@ -46,8 +41,8 @@ body {
 .right-button {
     background-color: $transparent;
     border: none;
-    padding: 5px;
-    height: 40px;
+    padding: 0px 5px;
+    height: 30px;
     width: 34px;
 }
 
@@ -155,8 +150,6 @@ $percent: 14.29%;
 
 .split-table.st-header > tr > th,
 .split-table.st-body > tr > td,
-.split-table > .st-header > tr > th,
-.split-table > .st-body > tr > td,
 .split-table > thead > tr > th {
     width: $percent;
     padding: 2px 0px;
@@ -167,7 +160,7 @@ $percent: 14.29%;
 }
 
 .action-bar {
-    margin: 0px 0px 24px 0px;
+    margin: 0px 0px 15px 0px;
 }
 
 .action-button {
