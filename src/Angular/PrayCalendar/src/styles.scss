@@ -83,7 +83,7 @@ body {
 .split-table .st-sat-th,
 .split-table .st-sun-th,
 .split-table .st-yellow-th {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -119,7 +119,7 @@ body {
 .split-table .st-sat-td,
 .split-table .st-sun-td,
 .split-table .st-yellow-td {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: normal;
 }
 
@@ -153,6 +153,10 @@ body {
 
 $percent: 14.29%;
 
+.split-table.st-header > tr > th,
+.split-table.st-body > tr > td,
+.split-table > .st-header > tr > th,
+.split-table > .st-body > tr > td,
 .split-table > thead > tr > th {
     width: $percent;
     padding: 2px 0px;
