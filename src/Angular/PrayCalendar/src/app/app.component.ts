@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
   }
 
   isToday(day: number): boolean {
+    this.timeNow = new Date();
     if (this.displayMonth.getFullYear() !== this.timeNow.getFullYear() || this.displayMonth.getMonth() !== this.timeNow.getMonth()) {
       return false;
     }
@@ -40,7 +41,8 @@ export class AppComponent implements OnInit {
   }
 
   showToday() {
-    this.displayMonth.setMonth(this.timeNow.getMonth());
+    this.timeNow = new Date();
+    this.displayMonth = new Date(this.timeNow.getFullYear(), this.timeNow.getMonth());
     this.displayMonthStr = this.datePipe.transform(this.displayMonth, 'MMMM, yyyy');
 
     this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
@@ -57,6 +59,7 @@ export class AppComponent implements OnInit {
   }
 
   private updateTime() {
+    this.timeNow = new Date();
     this.timeNowHoursStr = this.datePipe.transform(this.timeNow, 'h');
     this.timeNowMinsStr = this.datePipe.transform(this.timeNow, 'mm');
     this.timeNowAmPmStr = this.datePipe.transform(this.timeNow, 'a');
