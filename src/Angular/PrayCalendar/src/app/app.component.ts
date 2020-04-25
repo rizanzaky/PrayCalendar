@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChildren, ElementRef } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { PrayerTimesService } from 'src/services/prayer-times.service';
 import { DatetimeHelper } from 'src/helpers/datetime-herlper';
@@ -10,13 +10,14 @@ import { DatetimeHelper } from 'src/helpers/datetime-herlper';
 })
 export class AppComponent implements OnInit {
 
+  private timeNow: Date = new Date();
   selectedDate: Date = new Date();
-  displayMonth: Date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth());
+  displayMonth: Date = new Date(this.timeNow.getFullYear(), this.timeNow.getMonth());
+
   displayMonthStr: string;
   datesForMonth: number[][] = [];
   timesForDates: string[][] = [];
   private prayerTimes: Object;
-  private timeNow: Date
   timeNowHoursStr: string;
   timeNowMinsStr: string;
   isBlinked: boolean = false;
@@ -25,9 +26,34 @@ export class AppComponent implements OnInit {
   constructor(private prayerTimesService: PrayerTimesService, private datePipe: DatePipe) {
   }
 
+  // @ViewChildren('calendar') calendar;
+
   ngOnInit(): void {
     this.runClock();
     this.loadData();
+    this.markToday();
+  }
+
+  // ngAfterViewInit(){
+  //   // var element = document.getElementById('day-id-25');
+  //   // element.classList.add("today-cell");
+
+  //   // this.calendar.changes.subscribe(val => {
+  //   //   var element = document.getElementById('day-id-25');
+  //   //   element.classList.add("today-cell");
+  //   // });
+  // }
+
+  markToday() {
+
+  }
+
+  isToday(day: number): boolean {
+    if (this.displayMonth.getFullYear() !== this.timeNow.getFullYear() || this.displayMonth.getMonth() !== this.timeNow.getMonth()) {
+      return false;
+    }
+
+    return day === this.timeNow.getDate();
   }
 
   private runClock() {
@@ -40,7 +66,6 @@ export class AppComponent implements OnInit {
   }
 
   private updateTime() {
-    this.timeNow = new Date();
     this.timeNowHoursStr = this.datePipe.transform(this.timeNow, 'h');
     this.timeNowMinsStr = this.datePipe.transform(this.timeNow, 'mm');
     this.timeNowAmPmStr = this.datePipe.transform(this.timeNow, 'a');
