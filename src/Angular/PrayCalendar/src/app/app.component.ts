@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChildren, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { PrayerTimesService } from 'src/services/prayer-times.service';
 import { DatetimeHelper } from 'src/helpers/datetime-herlper';
@@ -26,26 +26,9 @@ export class AppComponent implements OnInit {
   constructor(private prayerTimesService: PrayerTimesService, private datePipe: DatePipe) {
   }
 
-  // @ViewChildren('calendar') calendar;
-
   ngOnInit(): void {
     this.runClock();
     this.loadData();
-    this.markToday();
-  }
-
-  // ngAfterViewInit(){
-  //   // var element = document.getElementById('day-id-25');
-  //   // element.classList.add("today-cell");
-
-  //   // this.calendar.changes.subscribe(val => {
-  //   //   var element = document.getElementById('day-id-25');
-  //   //   element.classList.add("today-cell");
-  //   // });
-  // }
-
-  markToday() {
-
   }
 
   isToday(day: number): boolean {

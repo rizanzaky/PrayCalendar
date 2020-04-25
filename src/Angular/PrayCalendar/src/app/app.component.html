@@ -18,7 +18,7 @@
             </div>
 
             <!-- month view -->
-            <div class="month-view" #calendar>
+            <div class="month-view">
                 <table class="split-table text-center w-100">
                     <thead>
                         <tr class="st-bottom-border-5">
@@ -34,13 +34,13 @@
 
                     <tbody>
                         <tr *ngFor="let dateForMonth of datesForMonth" class="st-bottom-border-2">
-                            <td class="st-week-td"><span attr.id="day-id-{{dateForMonth[0]}}" [class.today-cell]="isToday(dateForMonth[0])">{{dateForMonth[0]}}</span></td>
-                            <td class="st-week-td"><span attr.id="day-id-{{dateForMonth[1]}}" [class.today-cell]="isToday(dateForMonth[1])">{{dateForMonth[1]}}</span></td>
-                            <td class="st-week-td"><span attr.id="day-id-{{dateForMonth[2]}}" [class.today-cell]="isToday(dateForMonth[2])">{{dateForMonth[2]}}</span></td>
-                            <td class="st-week-td"><span attr.id="day-id-{{dateForMonth[3]}}" [class.today-cell]="isToday(dateForMonth[3])">{{dateForMonth[3]}}</span></td>
-                            <td class="st-week-td"><span attr.id="day-id-{{dateForMonth[4]}}" [class.today-cell]="isToday(dateForMonth[4])">{{dateForMonth[4]}}</span></td>
-                            <td class="st-sat-td"><span attr.id="day-id-{{dateForMonth[5]}}" [class.today-cell]="isToday(dateForMonth[5])">{{dateForMonth[5]}}</span></td>
-                            <td class="st-sun-td"><span attr.id="day-id-{{dateForMonth[6]}}" [class.today-cell]="isToday(dateForMonth[6])">{{dateForMonth[6]}}</span></td>
+                            <td class="st-week-td"><span [class.today-cell]="isToday(dateForMonth[0])">{{dateForMonth[0]}}</span></td>
+                            <td class="st-week-td"><span [class.today-cell]="isToday(dateForMonth[1])">{{dateForMonth[1]}}</span></td>
+                            <td class="st-week-td"><span [class.today-cell]="isToday(dateForMonth[2])">{{dateForMonth[2]}}</span></td>
+                            <td class="st-week-td"><span [class.today-cell]="isToday(dateForMonth[3])">{{dateForMonth[3]}}</span></td>
+                            <td class="st-week-td"><span [class.today-cell]="isToday(dateForMonth[4])">{{dateForMonth[4]}}</span></td>
+                            <td class="st-sat-td"><span [class.today-cell]="isToday(dateForMonth[5])">{{dateForMonth[5]}}</span></td>
+                            <td class="st-sun-td"><span [class.today-cell]="isToday(dateForMonth[6])">{{dateForMonth[6]}}</span></td>
                         </tr>
                     </tbody>
                 </table>
