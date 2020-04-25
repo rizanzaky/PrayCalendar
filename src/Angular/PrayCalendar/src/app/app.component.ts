@@ -39,6 +39,14 @@ export class AppComponent implements OnInit {
     return day === this.timeNow.getDate();
   }
 
+  showToday() {
+    this.displayMonth.setMonth(this.timeNow.getMonth());
+    this.displayMonthStr = this.datePipe.transform(this.displayMonth, 'MMMM, yyyy');
+
+    this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
+    this.fillPrayerTimesForDates(this.displayMonth.getMonth());
+  }
+
   private runClock() {
     this.updateTime();
 
