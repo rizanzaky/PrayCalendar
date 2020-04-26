@@ -34,13 +34,13 @@
 
                     <tbody>
                         <tr *ngFor="let dateForMonth of datesForMonth" class="st-bottom-border-2">
-                            <td class="st-week-td">{{dateForMonth[0]}}</td>
-                            <td class="st-week-td">{{dateForMonth[1]}}</td>
-                            <td class="st-week-td">{{dateForMonth[2]}}</td>
-                            <td class="st-week-td">{{dateForMonth[3]}}</td>
-                            <td class="st-week-td">{{dateForMonth[4]}}</td>
-                            <td class="st-sat-td">{{dateForMonth[5]}}</td>
-                            <td class="st-sun-td">{{dateForMonth[6]}}</td>
+                            <td class="st-week-td"><span [class.today-cell]="isToday(dateForMonth[0])">{{dateForMonth[0]}}</span></td>
+                            <td class="st-week-td"><span [class.today-cell]="isToday(dateForMonth[1])">{{dateForMonth[1]}}</span></td>
+                            <td class="st-week-td"><span [class.today-cell]="isToday(dateForMonth[2])">{{dateForMonth[2]}}</span></td>
+                            <td class="st-week-td"><span [class.today-cell]="isToday(dateForMonth[3])">{{dateForMonth[3]}}</span></td>
+                            <td class="st-week-td"><span [class.today-cell]="isToday(dateForMonth[4])">{{dateForMonth[4]}}</span></td>
+                            <td class="st-sat-td"><span [class.today-cell]="isToday(dateForMonth[5])">{{dateForMonth[5]}}</span></td>
+                            <td class="st-sun-td"><span [class.today-cell]="isToday(dateForMonth[6])">{{dateForMonth[6]}}</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -63,50 +63,50 @@
             </div>
 
             <button class="d-flex justify-content-center align-items-center action-button today-button"
-                (click)="onPlusDate()" disabled>
+                (click)="showToday()">
                 <span class="swap-icon"></span>
                 <span>Today</span>
             </button>
         </div>
 
         <!-- date info view -->
-        <div class="flex-grow-1 d-flex flex-column date-info-view overflow-hidden">
-            <!-- date info area -->
-            <div class="flex-grow-1 overflow-auto">
-                <table class="split-table text-center w-100">
-                    <thead>
-                        <tr class="st-bottom-border-5">
-                            <th class="st-sat-th">Date</th>
-                            <th class="st-week-th">Fajr</th>
-                            <th class="st-yellow-th">Sun</th>
-                            <th class="st-week-th">Luhar</th>
-                            <th class="st-week-th">Asar</th>
-                            <th class="st-week-th">Ma'rib</th>
-                            <th class="st-week-th">Isha</th>
-                        </tr>
-                    </thead>
-    
-                    <tbody class="text-center">
-                        <tr *ngFor="let timesForDate of timesForDates" class="st-bottom-border-2">
-                            <td class="st-sat-td">{{timesForDate[0]}}
-                            </td>
-                            <td class="st-week-td">{{timesForDate[1]}}
-                            </td>
-                            <td class="st-yellow-td">{{timesForDate[2]}}
-                            </td>
-                            <td class="st-week-td">{{timesForDate[3]}}
-                            </td>
-                            <td class="st-week-td">{{timesForDate[4]}}
-                            </td>
-                            <td class="st-week-td">{{timesForDate[6]}}
-                            </td>
-                            <td class="st-week-td">{{timesForDate[7]}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="flex-grow-1 d-flex flex-column date-info-view overflow-hidden text-center">
+
+            <!-- table header -->
+            <div class="split-table st-header">
+                <!-- table row -->
+                <tr class="st-bottom-border-5 d-flex justify-content-between">
+                    <th class="st-sat-th">Date</th>
+                    <th class="st-week-th">Fajr</th>
+                    <th class="st-yellow-th">Sun</th>
+                    <th class="st-week-th">Luhar</th>
+                    <th class="st-week-th">Asar</th>
+                    <th class="st-week-th">Ma'rib</th>
+                    <th class="st-week-th">Isha</th>
+                </tr>
             </div>
-    
+
+            <!-- date info area -->
+            <div class="split-table st-body flex-grow-1 overflow-auto">
+                <tr *ngFor="let timesForDate of timesForDates"
+                    class="st-bottom-border-2 d-flex justify-content-between">
+                    <td class="st-sat-td">{{timesForDate[0]}}
+                    </td>
+                    <td class="st-week-td">{{timesForDate[1]}}
+                    </td>
+                    <td class="st-yellow-td">{{timesForDate[2]}}
+                    </td>
+                    <td class="st-week-td">{{timesForDate[3]}}
+                    </td>
+                    <td class="st-week-td">{{timesForDate[4]}}
+                    </td>
+                    <td class="st-week-td">{{timesForDate[6]}}
+                    </td>
+                    <td class="st-week-td">{{timesForDate[7]}}
+                    </td>
+                </tr>
+            </div>
+
             <!-- flip indicator -->
             <div class="flip-indicator text-center">
                 <span class="dot-indicator"></span>

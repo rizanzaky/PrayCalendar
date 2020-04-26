@@ -14,19 +14,17 @@ $light-red: #ffe6f9;
 $dark-yellow: #a58c00;
 $light-yellow: #fffccc;
 $action-blue: #3fa2f8;
+$dark-green: #059b23;
+$light-green: #deffed;
 
 html,
 body {
     height: 100%;
-}
-
-.container-fluid {
-    // background-color: white;
+    touch-action: manipulation;
 }
 
 .calendar-view {
-    // background-color: red;
-    margin: 10px -5px 22px -5px;
+    margin: 10px -5px 13px -5px;
 }
 
 .date-throttle {
@@ -46,8 +44,8 @@ body {
 .right-button {
     background-color: $transparent;
     border: none;
-    padding: 5px;
-    height: 40px;
+    padding: 0px 5px;
+    height: 30px;
     width: 34px;
 }
 
@@ -75,6 +73,17 @@ body {
     border-bottom: 5px solid $white;
 }
 
+.today-cell {
+    background-color: $light-green;
+    display: block;
+    font-weight: bold;
+}
+
+.selected-cell {
+    border: 3px solid $dark-green;
+    display: block;
+}
+
 .split-table .st-bottom-border-2 {
     border-bottom: 2px solid $white;
 }
@@ -83,76 +92,72 @@ body {
 .split-table .st-sat-th,
 .split-table .st-sun-th,
 .split-table .st-yellow-th {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
+    color: $dark-white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
 }
 
 .split-table .st-yellow-th {
-    border-left: 2px solid white;
-    border-right: 2px solid white;
     background-color: $dark-yellow;
-    color: $dark-white;
 }
 
 .split-table .st-week-th {
-    border-left: 2px solid white;
-    border-right: 2px solid white;
     background-color: $light-dark;
-    color: $dark-white;
 }
 
 .split-table .st-sat-th {
-    border-left: 2px solid white;
-    border-right: 2px solid white;
     background-color: $dark-blue;
-    color: $dark-white;
 }
 
 .split-table .st-sun-th {
-    border-left: 2px solid white;
-    border-right: 2px solid white;
     background-color: $dark-red;
-    color: $dark-white;
 }
 
 .split-table .st-week-td,
 .split-table .st-sat-td,
 .split-table .st-sun-td,
 .split-table .st-yellow-td {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: normal;
+    color: $black;
+    white-space: nowrap;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
 }
 
 .split-table .st-yellow-td {
-    border-left: 2px solid white;
-    border-right: 2px solid white;
     background-color: $light-yellow;
-    color: $black;
 }
 
 .split-table .st-week-td {
-    border-left: 2px solid white;
-    border-right: 2px solid white;
     background-color: $light-gray;
-    color: $black;
 }
 
 .split-table .st-sat-td {
-    border-left: 2px solid white;
-    border-right: 2px solid white;
     background-color: $light-blue;
-    color: $black;
 }
 
 .split-table .st-sun-td {
-    border-left: 2px solid white;
-    border-right: 2px solid white;
     background-color: $light-red;
-    color: $black;
+}
+
+$percent: 14.29%;
+
+.split-table.st-header > tr > th,
+.split-table.st-body > tr > td,
+.split-table > thead > tr > th {
+    width: $percent;
+    padding: 0px;
+}
+
+.month-view > .split-table > tbody > tr > td {
+    padding: 0px;
 }
 
 .action-bar {
-    margin: 0px 0px 24px 0px;
+    margin: 0px 0px 15px 0px;
 }
 
 .action-button {
@@ -165,12 +170,12 @@ body {
     height: 32px;
     border-radius: 10px;
     width: 33%;
-
-    opacity: 50%;
 }
 
 .swap-button {
     border-bottom-left-radius: 0px;
+
+    opacity: 50%;
 }
 
 .today-button {

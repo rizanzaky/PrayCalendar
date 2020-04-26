@@ -10,13 +10,14 @@ import { DatetimeHelper } from 'src/helpers/datetime-herlper';
 })
 export class AppComponent implements OnInit {
 
+  private timeNow: Date = new Date();
   selectedDate: Date = new Date();
-  displayMonth: Date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth());
+  displayMonth: Date = new Date(this.timeNow.getFullYear(), this.timeNow.getMonth());
+
   displayMonthStr: string;
   datesForMonth: number[][] = [];
   timesForDates: string[][] = [];
   private prayerTimes: Object;
-  private timeNow: Date
   timeNowHoursStr: string;
   timeNowMinsStr: string;
   isBlinked: boolean = false;
@@ -30,6 +31,24 @@ export class AppComponent implements OnInit {
     this.loadData();
   }
 
+  isToday(day: number): boolean {
+    this.timeNow = new Date();
+    if (this.displayMonth.getFullYear() !== this.timeNow.getFullYear() || this.displayMonth.getMonth() !== this.timeNow.getMonth()) {
+      return false;
+    }
+
+    return day === this.timeNow.getDate();
+  }
+
+  showToday() {
+    this.timeNow = new Date();
+    this.displayMonth = new Date(this.timeNow.getFullYear(), this.timeNow.getMonth());
+    this.displayMonthStr = this.datePipe.transform(this.displayMonth, 'MMMM, yyyy');
+
+    this.fillDatesFor(this.displayMonth.getFullYear(), this.displayMonth.getMonth());
+    this.fillPrayerTimesForDates(this.displayMonth.getMonth());
+  }
+
   private runClock() {
     this.updateTime();
 
@@ -41,7 +60,7 @@ export class AppComponent implements OnInit {
 
   private updateTime() {
     this.timeNow = new Date();
-    this.timeNowHoursStr = this.datePipe.transform(this.timeNow, 'hh');
+    this.timeNowHoursStr = this.datePipe.transform(this.timeNow, 'h');
     this.timeNowMinsStr = this.datePipe.transform(this.timeNow, 'mm');
     this.timeNowAmPmStr = this.datePipe.transform(this.timeNow, 'a');
   }
@@ -102,7 +121,9 @@ export class AppComponent implements OnInit {
           break;
         }
       }
-      this.datesForMonth.push(weekDays);
+      if (weekDays.length > 0) {
+        this.datesForMonth.push(weekDays);
+      }
     }
   }
 
