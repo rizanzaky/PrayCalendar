@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="PrayCalendar.MainPage"
+             x:Name="myPage"
+             xmlns:Local="clr-namespace:PrayCalendar;assembly=PrayCalendar">
+
+    <StackLayout Spacing="0">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15,25,15,15">
+            <Button Text="Left" HeightRequest="30" VerticalOptions="Center" FontSize="24"></Button>
+            <Label Text="March, 2020" HorizontalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
+            <Button Text="Right" HeightRequest="30" VerticalOptions="Center" FontSize="24"></Button>
+        </StackLayout>
+
+        <Grid HorizontalOptions="FillAndExpand" Margin="15,0,15,5" ColumnSpacing="2" RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Padding="0,4" Text="Mon" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#3A3A3A" TextColor="White" />
+            <Label Grid.Column="1" Padding="0,4" Text="Tue" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#3A3A3A" TextColor="White" />
+            <Label Grid.Column="2" Padding="0,4" Text="Wed" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#3A3A3A" TextColor="White" />
+            <Label Grid.Column="3" Padding="0,4" Text="Thu" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#3A3A3A" TextColor="White" />
+            <Label Grid.Column="4" Padding="0,4" Text="Fri" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#3A3A3A" TextColor="White" />
+            <Label Grid.Column="5" Padding="0,4" Text="Sat" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#00689F" TextColor="White" />
+            <Label Grid.Column="6" Padding="0,4" Text="Sun" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#FF0080" TextColor="White" />
+        </Grid>
+
+        <StackLayout Spacing="0" Margin="15,0,15,24" BindableLayout.ItemsSource="{Binding Weeks, Source={x:Reference myPage}}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalOptions="FillAndExpand" Margin="0,0,0,2" ColumnSpacing="2" RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Padding="0,4" Text="{Binding .[0]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#F2F2F2" TextColor="#202529" />
+                        <Label Grid.Column="1" Padding="0,4" Text="{Binding .[1]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#F2F2F2" TextColor="#202529" />
+                        <Label Grid.Column="2" Padding="0,4" Text="{Binding .[2]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#F2F2F2" TextColor="#202529" />
+                        <Label Grid.Column="3" Padding="0,4" Text="{Binding .[3]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#F2F2F2" TextColor="#202529" />
+                        <Label Grid.Column="4" Padding="0,4" Text="{Binding .[4]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#F2F2F2" TextColor="#202529" />
+                        <Label Grid.Column="5" Padding="0,4" Text="{Binding .[5]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#C7E8FA" TextColor="#202529" />
+                        <Label Grid.Column="6" Padding="0,4" Text="{Binding .[6]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#FFE6F9" TextColor="#202529" />
+                    </Grid>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" Spacing="0" Margin="15,0,15,24" HorizontalOptions="FillAndExpand">
+            <Button Text="Day View" HeightRequest="34" WidthRequest="100" VerticalOptions="Center" FontSize="14" TextColor="#FFFFFF" BackgroundColor="#45A4F5"></Button>
+            <Label Text="10:03" FontSize="24" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" />
+            <Button Text="Today" HeightRequest="34" WidthRequest="100" VerticalOptions="Center" FontSize="14" TextColor="#FFFFFF" BackgroundColor="#45A4F5"></Button>
+        </StackLayout>
+
+        <Grid HorizontalOptions="FillAndExpand" Margin="15,0,15,5" ColumnSpacing="2" RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Padding="0,4" Text="Date" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#0067A1" TextColor="White" />
+            <Label Grid.Column="1" Padding="0,4" Text="Fajr" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#3A3A3A" TextColor="White" />
+            <Label Grid.Column="2" Padding="0,4" Text="S'rise" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#A58C00" TextColor="White" />
+            <Label Grid.Column="3" Padding="0,4" Text="Luhar" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#3A3A3A" TextColor="White" />
+            <Label Grid.Column="4" Padding="0,4" Text="Asar" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#3A3A3A" TextColor="White" />
+            <Label Grid.Column="5" Padding="0,4" Text="M'rib" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#3A3A3A" TextColor="White" />
+            <Label Grid.Column="6" Padding="0,4" Text="Isha" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#3A3A3A" TextColor="White" />
+        </Grid>
+
+        <StackLayout Spacing="0" Margin="15,0,15,22" BindableLayout.ItemsSource="{Binding Weeks, Source={x:Reference myPage}}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalOptions="FillAndExpand" Margin="0,0,0,2" ColumnSpacing="2" RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Padding="0,4" Text="{Binding .[0]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#C6E8FB" TextColor="#202529" />
+                        <Label Grid.Column="1" Padding="0,4" Text="{Binding .[1]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#F2F2F2" TextColor="#202529" />
+                        <Label Grid.Column="2" Padding="0,4" Text="{Binding .[2]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#FFFCCC" TextColor="#202529" />
+                        <Label Grid.Column="3" Padding="0,4" Text="{Binding .[3]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#F2F2F2" TextColor="#202529" />
+                        <Label Grid.Column="4" Padding="0,4" Text="{Binding .[4]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#F2F2F2" TextColor="#202529" />
+                        <Label Grid.Column="5" Padding="0,4" Text="{Binding .[5]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#F2F2F2" TextColor="#202529" />
+                        <Label Grid.Column="6" Padding="0,4" Text="{Binding .[6]}" FontSize="14" HorizontalTextAlignment="Center" BackgroundColor="#F2F2F2" TextColor="#202529" />
+                    </Grid>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
