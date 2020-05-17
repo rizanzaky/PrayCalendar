@@ -87,7 +87,7 @@
             <Label Grid.Column="6" Padding="0,4" Text="Isha" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" BackgroundColor="#3A3A3A" TextColor="White" />
         </Grid>
 
-        <StackLayout Spacing="0" Margin="15,0,15,22" BindableLayout.ItemsSource="{Binding Weeks, Source={x:Reference myPage}}">
+        <StackLayout Spacing="0" Margin="15,0,15,22" BindableLayout.ItemsSource="{Binding PrayTimeForToday, Source={x:Reference myPage}}">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalOptions="FillAndExpand" Margin="0,0,0,2" ColumnSpacing="2" RowSpacing="0">
