@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Newtonsoft.Json;
 using Xamarin.Forms;
@@ -17,9 +18,6 @@ namespace PrayCalendar
         private static readonly string[] s_shortMonths = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 
         private readonly DateTime _displayDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-
-        private List<List<string>> _prayTimeForToday;
-
         private DateTime _timeNow = DateTime.Now;
 
         public MainPage()
@@ -27,8 +25,48 @@ namespace PrayCalendar
             InitializeComponent();
 
             DisplayMonth = _displayDate.ToString("MMMM, yyyy");
+            FillDaysInMonth(_displayDate);
             var shortDisplayMonth = s_shortMonths[_displayDate.Month - 1];
-            PrayTimeForToday = _prayTimes[shortDisplayMonth];
+            
+            PrayTimeForToday.Clear();
+            foreach (var prayTime in _prayTimes[shortDisplayMonth])
+            {
+                PrayTimeForToday.Add(prayTime);
+            }
+        }
+
+        private void FillDaysInMonth(DateTime date)
+        {
+            var firstDate = new DateTime(date.Year, date.Month, 1);
+            var daysInDate = firstDate.AddMonths(1).AddDays(-1).Day;
+
+            var firstDayOfWeek = firstDate.DayOfWeek == DayOfWeek.Sunday ? 7 : (int)firstDate.DayOfWeek;
+
+            Weeks.Clear();
+            var dayOfMonth = 1;
+            var temp = new List<int?>(7) { null, null, null, null, null, null, null };
+            for (var i = firstDayOfWeek - 1; i < 7; i++)
+            {
+                temp[i] = dayOfMonth++;
+            }
+            Weeks.Add(temp);
+
+            var remainingWeeks = Math.Ceiling((daysInDate - dayOfMonth + 1) / 7d);
+            for (var i = 0; i < remainingWeeks; i++)
+            {
+                for (var j = 0; j < 7; j++)
+                {
+                    if (dayOfMonth > daysInDate)
+                    {
+                        temp[j] = null;
+                    }
+                    else
+                    {
+                        temp[j] = dayOfMonth++;
+                    }
+                }
+                Weeks.Add(temp);
+            }
         }
 
         private string _displayMonth;
@@ -46,29 +84,16 @@ namespace PrayCalendar
             }
         }
 
-        public List<List<int?>> Weeks { get; set; } = new List<List<int?>>
-        {
-            // @formatter:off
-            new List<int?> { null, 1, 2, 3, 4, 5, 6 },
-            new List<int?> { 7, 8, 9, 10, 11, 12, 13 },
-            new List<int?> { 14, 15, 16, 17, 18, 19, 20 },
-            new List<int?> { 21, 22, 23, 24, 25, 26, 27 },
-            new List<int?> { 28, 29, 30, 31, null, null, null }
-            // @formatter:on
-        };
 
-        public List<List<string>> PrayTimeForToday
+        public ObservableCollection<List<int?>> Weeks
         {
-            get => _prayTimeForToday;
-            set
-            {
-                if (_prayTimeForToday != value)
-                {
-                    _prayTimeForToday = value;
-                    OnPropertyChanged(nameof(PrayTimeForToday));
-                }
-            }
-        }
+            get;
+        } = new ObservableCollection<List<int?>>();
+
+        public ObservableCollection<List<string>> PrayTimeForToday
+        {
+            get;
+        } = new ObservableCollection<List<string>>();
 
         private Dictionary<string, List<List<string>>> _prayTimes { get; } =
             JsonConvert.DeserializeObject<Dictionary<string, List<List<string>>>>(_rawPrayTimes);
