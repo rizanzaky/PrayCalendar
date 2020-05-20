@@ -23,7 +23,7 @@
     <key>MinimumOSVersion</key>
     <string>8.0</string>
     <key>CFBundleDisplayName</key>
-    <string>PrayCalendar</string>
+    <string>Pray Calendar</string>
     <key>CFBundleIdentifier</key>
     <string>com.dipsas.praycalendar</string>
     <key>CFBundleVersion</key>

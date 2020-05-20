@@ -11,9 +11,9 @@
 
     <StackLayout Spacing="0">
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15,25,15,15">
-            <Button Text="Left" HeightRequest="30" VerticalOptions="Center" FontSize="24"></Button>
+            <Button Text="Left" Command="{Binding ReduceMonthCommand, Source={x:Reference myPage}}" HeightRequest="30" VerticalOptions="Center" FontSize="24"></Button>
             <Label Text="{Binding DisplayMonth}" HorizontalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
-            <Button Text="Right" HeightRequest="30" VerticalOptions="Center" FontSize="24"></Button>
+            <Button Text="Right" Command="{Binding AddMonthCommand, Source={x:Reference myPage}}" HeightRequest="30" VerticalOptions="Center" FontSize="24"></Button>
         </StackLayout>
 
         <Grid HorizontalOptions="FillAndExpand" Margin="15,0,15,5" ColumnSpacing="2" RowSpacing="0">
